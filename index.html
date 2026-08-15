@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineHub</title>
+
+  <script>
+    if (localStorage.getItem('theme') === 'dark' ||
+        (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+</head>
+<body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors">
+
+  <header class="flex flex-col gap-4 px-6 py-4 bg-slate-50 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sm:flex-row sm:items-center sm:justify-between">
+    <p class="text-xl font-extrabold">
+      <span class="text-pink-600 dark:text-pink-500">Cine</span>Hub
+    </p>
+
+    <nav>
+      <ul class="flex flex-wrap gap-5 text-sm font-medium">
+        <li><a href="#populares" class="hover:text-pink-600 dark:hover:text-pink-500">Películas</a></li>
+        <li><a href="#registro" class="hover:text-pink-600 dark:hover:text-pink-500">Mis planes</a></li>
+        <li><a href="#buscar" class="hover:text-pink-600 dark:hover:text-pink-500">Buscar</a></li>
+      </ul>
+    </nav>
+
+    <button
+      id="theme-toggle"
+      type="button"
+      aria-label="Cambiar entre modo claro y oscuro"
+      class="self-start sm:self-auto inline-flex items-center gap-2 rounded-full border border-slate-300 dark:border-slate-600 px-3 py-1.5 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-700"
+    >
+      <span id="theme-toggle-icon">🌙</span>
+      <span id="theme-toggle-label">Modo oscuro</span>
+    </button>
+  </header>
+
+  <main>
+    <section id="buscar" class="px-6 py-10 sm:px-10 md:py-16 lg:px-16">
+      <h1 class="text-2xl font-extrabold max-w-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+        Deja de perder tus planes de cine en el chat grupal
+      </h1>
+      <p class="mt-3 max-w-xl text-slate-600 dark:text-slate-300 md:text-lg">
+        Encuentra una película, elige un horario y crea un plan que tus amigos puedan
+        confirmar con un solo clic.
+      </p>
+
+      <form action="#" method="get" class="mt-6 flex max-w-md flex-col gap-2">
+        <label for="search" class="text-sm text-slate-600 dark:text-slate-300">Buscar películas</label>
+        <div class="flex gap-2">
+          <input
+            type="text" id="search" name="search" placeholder="Ej: Spider-Man"
+            class="flex-1 rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+          >
+          <button type="submit" class="rounded-md bg-pink-600 px-4 py-2 text-sm font-semibold text-white hover:bg-pink-700">
+            Buscar
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <section id="populares" class="px-6 py-10 sm:px-10 lg:px-16">
+      <h2 class="text-lg font-bold sm:text-xl">Películas populares</h2>
+
+      <div class="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4">
+          <img src="images/spiderman.jpg" alt="Imagen de la película Spider-Man" class="aspect-[2/3] w-full rounded-lg object-cover">
+          <h3 class="mt-3 font-semibold">Spider-Man</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300">⭐ 8.2 · Acción</p>
+        </article>
+
+        <article class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4">
+          <img src="images/odisea.jpg" alt="Imagen de la película L'Odyssée" class="aspect-[2/3] w-full rounded-lg object-cover">
+          <h3 class="mt-3 font-semibold">L'Odyssée</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300">⭐ 8.0 · Aventura</p>
+        </article>
+
+        <article class="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-4">
+          <img src="images/michael.jpg" alt="Imagen de la película Michael" class="aspect-[2/3] w-full rounded-lg object-cover">
+          <h3 class="mt-3 font-semibold">Michael</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300">⭐ 8.1 · Drama</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="registro" class="px-6 py-10 sm:px-10 lg:px-16">
+      <h2 class="text-lg font-bold sm:text-xl">Crea tu cuenta</h2>
+      <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">
+        Regístrate para crear planes de cine y compartirlos con tus amigos.
+      </p>
+
+      <form action="#" method="post" class="mt-4 flex max-w-md flex-col gap-4">
+        <div class="flex flex-col gap-1">
+          <label for="name" class="text-sm text-slate-600 dark:text-slate-300">Nombre</label>
+          <input type="text" id="name" name="name" required
+            class="rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500">
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="email" class="text-sm text-slate-600 dark:text-slate-300">Correo electrónico</label>
+          <input type="email" id="email" name="email" required
+            class="rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500">
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="password" class="text-sm text-slate-600 dark:text-slate-300">Contraseña</label>
+          <input type="password" id="password" name="password" required
+            class="rounded-md border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500">
+        </div>
+        <button type="submit" class="self-start rounded-md bg-pink-600 px-4 py-2 text-sm font-semibold text-white hover:bg-pink-700">
+          Registrarme
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="px-6 py-6 text-center text-sm text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-700">
+    <p>CineHub · Universidad de La Sabana</p>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-toggle-icon');
+    const label = document.getElementById('theme-toggle-label');
+
+    function syncToggleUI() {
+      const isDark = root.classList.contains('dark');
+      icon.textContent = isDark ? '☀️' : '🌙';
+      label.textContent = isDark ? 'Modo claro' : 'Modo oscuro';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+      syncToggleUI();
+    });
+
+    syncToggleUI();
+  </script>
+</body>
+</html>
